@@ -1,74 +1,75 @@
-# AutoCRM - Modern Customer Support System
+# AutoCRM
 
-A modern, scalable customer support system built with React and Supabase.
+A modern customer relationship management system built with React, TypeScript, and Supabase.
 
 ## Features
 
-- Ticket Management System
-- Customer Portal
-- Team Management
-- Real-time Updates
-- API-First Design
+- 🎫 Ticket Management System
+  - Create and track support tickets
+  - Priority levels and status tracking
+  - Tag-based categorization
+  - Internal notes for team collaboration
 
 ## Tech Stack
 
-- Frontend: React with TypeScript
-- UI Framework: Material-UI
+- Frontend: React + TypeScript
+- UI Framework: Material-UI (MUI)
 - Backend: Supabase
-- State Management: React Context + Supabase Realtime
 - Routing: React Router
-- Authentication: Supabase Auth
+- Build Tool: Vite
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v18.17.0 or higher)
-- npm (v9.6.7 or higher)
-
-### Installation
+## Setup
 
 1. Clone the repository
-```bash
-git clone [repository-url]
-cd autocrm
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Create a Supabase project and add the credentials to `.env.local`
-```bash
-VITE_SUPABASE_URL=your-supabase-url
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-```
-
-4. Start the development server
-```bash
-npm run dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env.local` file with your Supabase credentials:
+   ```
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+4. Initialize the database by running the following SQL in your Supabase SQL editor:
+   ```sql
+   CREATE TABLE tickets (
+     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+     title TEXT NOT NULL,
+     description TEXT NOT NULL,
+     status TEXT NOT NULL CHECK (status IN ('open', 'in_progress', 'resolved', 'closed')),
+     priority TEXT NOT NULL CHECK (priority IN ('low', 'medium', 'high', 'urgent')),
+     created_at TIMESTAMPTZ DEFAULT NOW(),
+     updated_at TIMESTAMPTZ DEFAULT NOW(),
+     created_by TEXT,
+     assigned_to TEXT,
+     tags TEXT[] DEFAULT '{}',
+     internal_notes TEXT
+   );
+   ```
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 ## Project Structure
 
 ```
 src/
-  ├── components/     # Reusable components
-  │   ├── layout/    # Layout components
-  │   ├── tickets/   # Ticket-related components
-  │   └── auth/      # Authentication components
-  ├── pages/         # Page components
-  ├── services/      # API and service functions
-  ├── utils/         # Utility functions
-  ├── types/         # TypeScript type definitions
-  └── hooks/         # Custom React hooks
+├── components/        # Reusable UI components
+│   └── tickets/      # Ticket-related components
+├── pages/            # Page components
+├── services/         # API and external service integrations
+├── types/           # TypeScript type definitions
+└── utils/           # Utility functions and configurations
 ```
 
-## Contributing
+## Available Scripts
 
-[Contribution guidelines]
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
 
 ## License
 
-[License information]
+MIT License - See [LICENSE](LICENSE) for details
