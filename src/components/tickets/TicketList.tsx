@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Ticket } from '../../types/ticket';
 import { ticketService } from '../../services/ticketService';
 import { Box, Card, CardContent, Typography, Chip, Stack } from '@mui/material';
 
 export const TicketList = () => {
+  const navigate = useNavigate();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +31,16 @@ export const TicketList = () => {
   return (
     <Stack spacing={2}>
       {tickets.map((ticket) => (
-        <Card key={ticket.id}>
+        <Card 
+          key={ticket.id}
+          onClick={() => navigate(`/tickets/${ticket.id}`)}
+          sx={{ 
+            cursor: 'pointer',
+            '&:hover': {
+              bgcolor: 'action.hover'
+            }
+          }}
+        >
           <CardContent>
             <Typography variant="h6">{ticket.title}</Typography>
             <Typography color="text.secondary" gutterBottom>

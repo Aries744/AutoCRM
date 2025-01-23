@@ -5,11 +5,14 @@ node_modules
 
 # Testing
 coverage
+/coverage
+*.lcov
 
 # Production
 dist
 dist-ssr
 *.local
+build
 
 # Environment
 .env
@@ -17,6 +20,7 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # Logs
 logs
@@ -30,6 +34,8 @@ lerna-debug.log*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -37,3 +43,19 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.cache
+.temp
+.tmp
+*.bak
+*.tmp
+*~
+
+# System Files
+Thumbs.db
+desktop.ini
