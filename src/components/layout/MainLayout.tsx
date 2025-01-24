@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import {
   Box,
   AppBar,
@@ -16,7 +15,7 @@ import {
   ListItemIcon,
   ListItemButton,
 } from '@mui/material';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, Outlet } from 'react-router-dom';
 import {
   Menu as MenuIcon,
   ConfirmationNumber as TicketIcon,
@@ -26,11 +25,7 @@ import {
 import AuthStatus from '../auth/AuthStatus';
 import { useState } from 'react';
 
-interface MainLayoutProps {
-  children: ReactNode;
-}
-
-export function MainLayout({ children }: MainLayoutProps) {
+export function MainLayout() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -139,7 +134,9 @@ export function MainLayout({ children }: MainLayoutProps) {
             </Box>
           )}
           
-          <AuthStatus />
+          <Box sx={{ flexGrow: { xs: 1, sm: 0 } }}>
+            <AuthStatus />
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -177,7 +174,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         }}
       >
         <Container maxWidth="lg">
-          {children}
+          <Outlet />
         </Container>
       </Box>
     </Box>

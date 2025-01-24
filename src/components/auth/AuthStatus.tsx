@@ -1,29 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
-import { supabase } from '../../services/supabase';
+import { Box, Button, Typography } from '@mui/material';
+import { LogoutOutlined } from '@mui/icons-material';
+import { useAuth } from '../../contexts/AuthContext';
 
 export function AuthStatus() {
-  const [status, setStatus] = useState<string>('Checking connection...');
+  const { user, signOut } = useAuth();
 
-  useEffect(() => {
-    async function checkConnection() {
-      try {
-        const { error } = await supabase.auth.getSession();
-        if (error) throw error;
-        setStatus('Connected to Supabase!');
-      } catch (error) {
-        setStatus('Error connecting to Supabase');
-        console.error('Supabase connection error:', error);
-      }
+  const handleLogout = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
     }
+  };
 
-    checkConnection();
-  }, []);
+  if (!user) {
+    return null;
+  }
 
   return (
-    <Typography color={status.includes('Error') ? 'error' : 'primary'}>
-      {status}
-    </Typography>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Typography variant="body2" color="text.secondary">
+        {user.email}
+      </Typography>
+      <Button
+        variant="outlined"
+        size="small"
+        onClick={handleLogout}
+        startIcon={<LogoutOutlined />}
+      >
+        Logout
+      </Button>
+    </Box>
   );
 }
 

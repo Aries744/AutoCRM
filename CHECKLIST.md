@@ -2,6 +2,19 @@
 
 ## Core Architecture
 
+### Authentication & Authorization
+- [x] Basic Authentication
+  - [x] Email/Password Authentication
+  - [x] Protected Routes
+  - [x] Session Management
+  - [x] Login/Signup Forms
+  - [x] Logout Functionality
+- [ ] Advanced Authentication
+  - [ ] Social Logins
+  - [ ] Password Reset
+  - [ ] Email Verification
+  - [ ] Role-Based Access Control
+
 ### Ticket Data Model
 - [x] Standard Identifiers & Timestamps
 - [x] Dynamic Status Tracking (open, in_progress, resolved, closed)
@@ -88,7 +101,12 @@
   - [x] Success/error feedback
   - [x] Responsive design
 - [ ] Ticket Tracking
-- [ ] Customer Authentication
+- [x] Customer Authentication
+  - [x] Email/Password Authentication
+  - [x] Session Management
+  - [x] Protected Routes
+  - [x] Login/Signup Forms
+  - [x] Logout Functionality
 - [ ] History View
 
 ### Self-Service Tools
@@ -140,10 +158,16 @@
 - Core ticket properties (status, priority, tags)
 - Internal notes system
 - Customer ticket submission portal with validation and feedback
+- Customer authentication with Supabase
+- Protected routes and session management
+- Centralized auth state management
+- Persistent sessions across page reloads
 
 ## Next Priority Features (Suggested):
-1. Database Integration (Supabase)
-2. Customer Authentication
-3. Ticket Tracking for Submitted Tickets
-4. Email Notifications
-5. File Attachments Support 
+1. Ticket Tracking for Submitted Tickets
+2. Email Notifications
+3. File Attachments Support
+4. Customer History View
+5. Advanced Filtering & Search
+6. Password Reset Functionality
+7. Email Verification Flow 

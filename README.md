@@ -16,6 +16,12 @@ A modern customer relationship management system built with React, TypeScript, a
   - Quick insertion into ticket responses
   - Customize templates before sending
   - Pre-built template examples
+- 🔐 Authentication & Authorization
+  - Secure email/password authentication
+  - Protected routes and resources
+  - Persistent sessions
+  - User-specific views
+  - Seamless login/signup experience
 - 🌐 Customer Portal
   - User-friendly ticket submission interface
   - Priority selection with visual indicators
@@ -35,7 +41,7 @@ The application currently runs in development mode with placeholder data:
 - Sample support tickets with realistic scenarios
 - Pre-built response templates for common situations
 - Simulated timestamps and user interactions
-- No database connection required for testing
+- Supabase authentication integration
 
 ## Live Demo
 Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel.app)
@@ -45,31 +51,33 @@ Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel
 - Frontend: React + TypeScript
 - UI Framework: Material-UI (MUI)
 - Backend: Supabase
+- Authentication: Supabase Auth
 - Routing: React Router
 - Build Tool: Vite
 - Deployment: Vercel
 
 ## Setup
 
-1. Clone the repository
+1. Clone the repository and install dependencies:
    ```bash
    npm install
    ```
 
-2. Create a `.env.local` file with your Supabase credentials:
+2. Create a `.env` file with your Supabase credentials:
    ```
    VITE_SUPABASE_URL=your_supabase_url
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 
-3. Initialize the database by running the following SQL in your Supabase SQL editor:
-   - Go to Supabase Dashboard
-   - Click "SQL Editor" in the left sidebar
-   - Click "+" next to "Search queries" to create a new query
-   - Copy and paste each SQL block below and run them separately:
+3. Set up Supabase Authentication:
+   - Go to your Supabase Dashboard
+   - Navigate to Authentication > Providers
+   - Enable Email provider
+   - Configure any additional providers as needed
 
-   First, create the tickets table:
+4. Initialize the database by running the following SQL in your Supabase SQL editor:
    ```sql
+   -- Create the tickets table
    CREATE TABLE tickets (
      id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
      title TEXT NOT NULL,
@@ -83,10 +91,8 @@ Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel
      tags TEXT[] DEFAULT '{}',
      internal_notes TEXT
    );
-   ```
 
-   Then, create the templates table:
-   ```sql
+   -- Create the templates table
    CREATE TABLE templates (
      id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
      title TEXT NOT NULL,
@@ -99,7 +105,7 @@ Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel
    );
    ```
 
-4. Start the development server:
+5. Start the development server:
    ```bash
    npm run dev
    ```
@@ -109,8 +115,10 @@ Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel
 ```
 src/
 ├── components/        # Reusable UI components
+│   ├── auth/         # Authentication components
 │   ├── tickets/      # Ticket-related components
 │   └── templates/    # Template-related components
+├── contexts/         # React contexts (Auth, etc.)
 ├── pages/            # Page components
 ├── services/         # API and external service integrations
 ├── types/           # TypeScript type definitions
@@ -125,6 +133,18 @@ src/
 - `npm run preview` - Preview production build
 
 ## Using the App
+
+### Authentication
+1. Visit the app and you'll be redirected to the auth page
+2. Choose to either sign in or sign up
+3. For sign up:
+   - Enter your email
+   - Create a password (min 6 characters)
+   - Verify your email if required
+4. For sign in:
+   - Enter your registered email
+   - Enter your password
+5. Use the logout button in the top-right to sign out
 
 ### Managing Tickets
 - View all tickets on the home page
