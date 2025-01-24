@@ -12,7 +12,7 @@
 - [ ] Advanced Authentication
   - [ ] Social Logins
   - [ ] Password Reset
-  - [ ] Email Verification
+  - [x] Email Verification (configured, pending Supabase settings)
   - [x] Role-Based Access Control
 
 ### Ticket Data Model
@@ -165,11 +165,12 @@
 - Role-based access control (@gauntletai.com for support staff)
 - Customer ticket tracking and history view
 - Support staff response templates
+- Email verification system (pending Supabase configuration)
+- Environment-specific configurations for local and production
 
 ## Next Priority Features (Suggested):
-1. Email Notifications
+1. Configure Supabase Email Provider
 2. File Attachments Support
 3. Advanced Filtering & Search
 4. Password Reset Functionality
-5. Email Verification Flow
-6. Knowledge Base / FAQ System 
+5. Knowledge Base / FAQ System 
