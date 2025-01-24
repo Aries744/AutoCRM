@@ -20,6 +20,28 @@ export const ticketService = {
       .single();
 
     if (error) throw error;
+
+    // Process the ticket using the Edge Function
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/process-ticket`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify(createdTicket),
+        }
+      );
+
+      if (!response.ok) {
+        console.error('Edge Function error:', await response.text());
+      }
+    } catch (err) {
+      console.error('Failed to process ticket:', err);
+    }
+
     return createdTicket;
   },
 
@@ -53,6 +75,28 @@ export const ticketService = {
       .single();
 
     if (error) throw error;
+
+    // Process the updated ticket using the Edge Function
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/process-ticket`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        console.error('Edge Function error:', await response.text());
+      }
+    } catch (err) {
+      console.error('Failed to process ticket:', err);
+    }
+
     return data;
   },
 }; 

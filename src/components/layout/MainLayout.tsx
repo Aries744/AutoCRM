@@ -26,9 +26,17 @@ export function MainLayout({ children }: MainLayoutProps) {
             <Button
               component={RouterLink}
               to="/templates"
-              sx={{ color: 'white' }}
+              sx={{ color: 'white', mr: 2 }}
             >
               Templates
+            </Button>
+            <Button
+              component={RouterLink}
+              to="/submit"
+              variant="outlined"
+              sx={{ color: 'white', borderColor: 'white' }}
+            >
+              Submit Ticket
             </Button>
           </Box>
           <AuthStatus />

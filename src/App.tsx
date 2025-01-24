@@ -6,6 +6,7 @@ import MainLayout from './components/layout/MainLayout';
 import { TicketsPage } from './pages/TicketsPage';
 import { TemplatesPage } from './pages/TemplatesPage';
 import { TicketDetailPage } from './pages/TicketDetailPage';
+import { SubmitTicketPage } from './pages/SubmitTicketPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/tickets" element={<TicketsPage />} />
             <Route path="/tickets/:id" element={<TicketDetailPage />} />
             <Route path="/templates" element={<TemplatesPage />} />
+            <Route path="/submit" element={<SubmitTicketPage />} />
           </Routes>
         </MainLayout>
       </BrowserRouter>
