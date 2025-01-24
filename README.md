@@ -9,11 +9,13 @@ A modern customer relationship management system built with React, TypeScript, a
   - Priority levels and status tracking
   - Tag-based categorization
   - Internal notes for team collaboration
+  - Realistic placeholder data for development
 - 📝 Response Templates
   - Create and manage reusable response templates
   - Categorize templates for easy access
   - Quick insertion into ticket responses
   - Customize templates before sending
+  - Pre-built template examples
 - 🌐 Customer Portal
   - User-friendly ticket submission interface
   - Priority selection with visual indicators
@@ -26,6 +28,14 @@ A modern customer relationship management system built with React, TypeScript, a
   - Consistent color scheme
   - Visual priority indicators
   - Modern typography and spacing
+
+## Development Mode
+
+The application currently runs in development mode with placeholder data:
+- Sample support tickets with realistic scenarios
+- Pre-built response templates for common situations
+- Simulated timestamps and user interactions
+- No database connection required for testing
 
 ## Live Demo
 Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel.app)
