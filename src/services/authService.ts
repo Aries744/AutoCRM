@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const appUrl = import.meta.env.VITE_APP_URL || window.location.origin;
 
 if (!supabaseUrl || !supabaseKey) {
   throw new Error('Missing Supabase environment variables');
@@ -16,6 +17,12 @@ export const authService = {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        emailRedirectTo: `${appUrl}/auth`,
+        data: {
+          email_confirmed: false,
+        }
+      }
     });
     if (error) throw error;
     return data;
@@ -49,5 +56,11 @@ export const authService = {
     const { data: { user }, error } = await supabase.auth.getUser();
     if (error) throw error;
     return user;
+  },
+
+  // Check if email is confirmed
+  async isEmailConfirmed() {
+    const user = await this.getCurrentUser();
+    return user?.email_confirmed_at != null;
   }
 }; 
