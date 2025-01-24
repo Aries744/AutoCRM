@@ -11,6 +11,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { AuthPage } from './pages/AuthPage';
 import { useAuth } from './contexts/AuthContext';
 import MyTicketsPage from './pages/MyTicketsPage';
+import { KnowledgeBasePage } from './pages/KnowledgeBasePage';
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -48,6 +49,7 @@ function App() {
               <Route path="/templates" element={<TemplatesPage />} />
               <Route path="/submit" element={<SubmitTicketPage />} />
               <Route path="/my-tickets" element={<MyTicketsPage />} />
+              <Route path="/knowledge-base/*" element={<KnowledgeBasePage />} />
             </Route>
           </Routes>
         </AuthProvider>

@@ -110,10 +110,16 @@
 - [x] History View
 
 ### Self-Service Tools
-- [ ] Knowledge Base
+- [x] Knowledge Base
+  - [x] Article categories and tags
+  - [x] Staff-only article management
+  - [x] View count tracking
+  - [x] Helpful feedback system
+  - [x] Rich article content
+  - [x] Category filtering
 - [ ] AI Chatbot
 - [ ] Interactive Tutorials
-- [ ] FAQ System
+- [x] FAQ System
 
 ### Communication Tools
 - [ ] Live Chat
@@ -167,10 +173,14 @@
 - Support staff response templates
 - Email verification system (pending Supabase configuration)
 - Environment-specific configurations for local and production
+- Knowledge base system with staff management
+- Article categories and tagging system
+- Article feedback and view tracking
+- Role-based article visibility (drafts for staff only)
 
 ## Next Priority Features (Suggested):
 1. Configure Supabase Email Provider
 2. File Attachments Support
 3. Advanced Filtering & Search
 4. Password Reset Functionality
-5. Knowledge Base / FAQ System 
+5. Rich Text Editor for Knowledge Base Articles 

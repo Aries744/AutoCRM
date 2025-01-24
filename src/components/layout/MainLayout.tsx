@@ -22,6 +22,7 @@ import {
   Description as TemplateIcon,
   Add as AddIcon,
   Folder as MyTicketsIcon,
+  Book as KnowledgeBaseIcon,
 } from '@mui/icons-material';
 import AuthStatus from '../auth/AuthStatus';
 import { useState } from 'react';
@@ -43,6 +44,7 @@ export function MainLayout() {
     { text: 'Templates', path: '/templates', icon: <TemplateIcon />, adminOnly: true },
     { text: 'Submit Ticket', path: '/submit', icon: <AddIcon /> },
     { text: 'My Tickets', path: '/my-tickets', icon: <MyTicketsIcon /> },
+    { text: 'Knowledge Base', path: '/knowledge-base', icon: <KnowledgeBaseIcon /> },
   ];
 
   // Filter nav items based on user role
