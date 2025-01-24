@@ -175,3 +175,149 @@ src/
 ## License
 
 MIT License - See [LICENSE](LICENSE) for details
+
+## Knowledge Base
+
+The Knowledge Base system provides a self-service platform for users to find answers to common questions and learn about the system.
+
+### Features
+
+- **Article Management**
+  - Staff members can create, edit, and delete articles
+  - Articles support categories: general, account, billing, technical, features
+  - Articles can have multiple tags for better organization
+  - Articles have draft, published, and archived states
+  - Automatic slug generation for SEO-friendly URLs
+
+- **Access Control**
+  - Public users can only view published articles
+  - Staff members (@gauntletai.com) can view and manage all articles
+  - Protected routes for article management
+
+- **User Engagement**
+  - View count tracking for articles
+  - "Helpful" feedback system
+  - Category-based filtering
+  - Tag-based organization
+
+- **Sample Content**
+  - Staff members can initialize sample articles
+  - Pre-written content covering common topics
+  - Covers all available categories
+
+### Database Schema
+
+```sql
+create table public.knowledge_base_articles (
+  id uuid default uuid_generate_v4() primary key,
+  title text not null,
+  content text not null,
+  category text not null,
+  status text not null,
+  slug text not null unique,
+  author_id uuid references auth.users(id),
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  views_count integer default 0,
+  helpful_count integer default 0,
+  tags text[] default array[]::text[]
+);
+```
+
+### Row Level Security (RLS)
+
+```sql
+-- Enable RLS
+alter table public.knowledge_base_articles enable row level security;
+
+-- Anyone can read published articles
+create policy "Anyone can read published articles"
+  on public.knowledge_base_articles for select
+  using (status = 'published');
+
+-- Staff can read all articles
+create policy "Staff can read all articles"
+  on public.knowledge_base_articles for select
+  using (auth.jwt() ->> 'email' like '%@gauntletai.com');
+
+-- Only staff can insert/update/delete
+create policy "Staff can manage articles"
+  on public.knowledge_base_articles for all
+  using (auth.jwt() ->> 'email' like '%@gauntletai.com');
+```
+
+### Usage
+
+1. **Viewing Articles**
+   - Navigate to the Knowledge Base section
+   - Browse articles by category
+   - Use tags to find related content
+   - Provide feedback on helpful articles
+
+2. **Managing Articles (Staff Only)**
+   - Click "New Article" to create content
+   - Use the article editor to write and format content
+   - Add relevant tags and select a category
+   - Choose article status (draft/published/archived)
+   - Initialize sample content with "Add Sample Articles"
+
+3. **Article States**
+   - Draft: Work in progress, only visible to staff
+   - Published: Visible to all users
+   - Archived: Hidden from regular view
+
+### Components
+
+- `KnowledgeBasePage`: Main container and routing
+- `ArticlesList`: Displays article grid with filtering
+- `ArticleView`: Individual article display with feedback
+- `ArticleEditor`: Create/edit interface for staff
+
+### Future Improvements
+
+1. Rich text editor for article content
+2. Search functionality
+3. Article relationships (related articles)
+4. Version history
+5. Comment system
+6. Export/import capabilities
+
+### Database Functions
+
+```sql
+-- Increment article view count
+create or replace function increment_article_views(article_id uuid)
+returns void as $$
+begin
+  update public.knowledge_base_articles
+  set views_count = views_count + 1
+  where id = article_id;
+end;
+$$ language plpgsql security definer;
+
+-- Increment article helpful count
+create or replace function increment_article_helpful(article_id uuid)
+returns void as $$
+begin
+  update public.knowledge_base_articles
+  set helpful_count = helpful_count + 1
+  where id = article_id;
+end;
+$$ language plpgsql security definer;
+```
+
+These functions are used to track article engagement:
+- `increment_article_views`: Automatically increments the view counter when an article is opened
+- `increment_article_helpful`: Increments the helpful counter when a user clicks the helpful button
+
+Both functions use `security definer` to ensure they can modify the data regardless of RLS policies.
+
+### Environment Setup
+
+1. Create the database table and functions using the SQL provided above
+2. Ensure Supabase environment variables are set:
+   ```
+   VITE_SUPABASE_URL=your_project_url
+   VITE_SUPABASE_ANON_KEY=your_anon_key
+   ```
+3. Staff emails should end with @gauntletai.com for proper access control
