@@ -105,7 +105,9 @@ Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel
    );
    ```
 
-5. Start the development server:
+5. Run the knowledge base migration from `supabase/migrations/20240124_knowledge_base_init.sql` to set up the knowledge base with sample articles.
+
+6. Start the development server:
    ```bash
    npm run dev
    ```
@@ -208,6 +210,7 @@ The Knowledge Base system provides a self-service platform for users to find ans
 ### Database Schema
 
 ```sql
+-- Create the knowledge base articles table
 create table public.knowledge_base_articles (
   id uuid default uuid_generate_v4() primary key,
   title text not null,
@@ -221,6 +224,84 @@ create table public.knowledge_base_articles (
   views_count integer default 0,
   helpful_count integer default 0,
   tags text[] default array[]::text[]
+);
+
+-- Insert initial sample articles
+INSERT INTO public.knowledge_base_articles 
+(title, content, category, status, slug, tags, views_count, helpful_count)
+VALUES
+(
+  'Welcome to AutoCRM',
+  'Welcome to AutoCRM! This guide will help you get started with our customer support system.
+
+Key Features:
+- Submit and track support tickets
+- Access our knowledge base
+- Get real-time updates on your requests
+- Communicate with our support team
+
+To get started, simply log in to your account and navigate to the "Submit Ticket" page.',
+  'general',
+  'published',
+  'welcome-to-autocrm',
+  ARRAY['getting started', 'guide'],
+  5,
+  2
+),
+(
+  'How to Submit Your First Ticket',
+  'Follow these simple steps to submit your first support ticket:
+
+1. Click "Submit Ticket" in the navigation menu
+2. Fill in a clear title describing your issue
+3. Provide detailed information in the description
+4. Select the appropriate priority level
+5. Add relevant tags if needed
+6. Click Submit
+
+Tips for effective tickets:
+- Be specific about your issue
+- Include any error messages you see
+- Describe what you''ve already tried
+- Add screenshots if helpful',
+  'technical',
+  'published',
+  'how-to-submit-ticket',
+  ARRAY['tickets', 'help', 'getting started'],
+  10,
+  4
+),
+(
+  'Understanding Priority Levels',
+  'AutoCRM uses four priority levels for tickets:
+
+1. Urgent
+   - Critical system failures
+   - Complete service outages
+   - Security incidents
+
+2. High
+   - Major functionality issues
+   - Significant business impact
+   - Time-sensitive problems
+
+3. Medium
+   - Non-critical bugs
+   - Feature requests
+   - Configuration issues
+
+4. Low
+   - General questions
+   - Minor improvements
+   - Documentation updates
+
+Choose the appropriate priority level to ensure proper handling of your request.',
+  'general',
+  'published',
+  'understanding-priority-levels',
+  ARRAY['priority', 'guide', 'tickets'],
+  8,
+  3
 );
 ```
 
