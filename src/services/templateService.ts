@@ -9,7 +9,7 @@ const PLACEHOLDER_TEMPLATES: Template[] = [
     category: 'Access Control',
     created_at: new Date(Date.now() - 604800000).toISOString(),
     updated_at: new Date(Date.now() - 604800000).toISOString(),
-    created_by: 'support.lead@company.com',
+    created_by: 'support.lead@gauntletai.com',
     is_shared: true
   },
   {
@@ -19,7 +19,7 @@ const PLACEHOLDER_TEMPLATES: Template[] = [
     category: 'Performance',
     created_at: new Date(Date.now() - 432000000).toISOString(),
     updated_at: new Date(Date.now() - 432000000).toISOString(),
-    created_by: 'tech.lead@company.com',
+    created_by: 'tech.lead@gauntletai.com',
     is_shared: true
   },
   {
@@ -29,7 +29,7 @@ const PLACEHOLDER_TEMPLATES: Template[] = [
     category: 'Development',
     created_at: new Date(Date.now() - 259200000).toISOString(),
     updated_at: new Date(Date.now() - 259200000).toISOString(),
-    created_by: 'dev.support@company.com',
+    created_by: 'dev.support@gauntletai.com',
     is_shared: true
   },
   {
@@ -39,7 +39,7 @@ const PLACEHOLDER_TEMPLATES: Template[] = [
     category: 'Product Feedback',
     created_at: new Date(Date.now() - 172800000).toISOString(),
     updated_at: new Date(Date.now() - 172800000).toISOString(),
-    created_by: 'product.manager@company.com',
+    created_by: 'product.manager@gauntletai.com',
     is_shared: true
   },
   {
@@ -49,7 +49,7 @@ const PLACEHOLDER_TEMPLATES: Template[] = [
     category: 'General',
     created_at: new Date(Date.now() - 86400000).toISOString(),
     updated_at: new Date(Date.now() - 86400000).toISOString(),
-    created_by: 'support.team@company.com',
+    created_by: 'support.team@gauntletai.com',
     is_shared: true
   }
 ];

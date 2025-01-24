@@ -21,29 +21,38 @@ import {
   ConfirmationNumber as TicketIcon,
   Description as TemplateIcon,
   Add as AddIcon,
+  Folder as MyTicketsIcon,
 } from '@mui/icons-material';
 import AuthStatus from '../auth/AuthStatus';
 import { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 
 export function MainLayout() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { user } = useAuth();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const navItems = [
-    { text: 'Tickets', path: '/', icon: <TicketIcon /> },
-    { text: 'Templates', path: '/templates', icon: <TemplateIcon /> },
+    { text: 'Tickets', path: '/', icon: <TicketIcon />, adminOnly: true },
+    { text: 'Templates', path: '/templates', icon: <TemplateIcon />, adminOnly: true },
     { text: 'Submit Ticket', path: '/submit', icon: <AddIcon /> },
+    { text: 'My Tickets', path: '/my-tickets', icon: <MyTicketsIcon /> },
   ];
+
+  // Filter nav items based on user role
+  const filteredNavItems = navItems.filter(item => 
+    !item.adminOnly || (user?.email?.includes('@gauntletai.com'))
+  );
 
   const drawer = (
     <List>
-      {navItems.map((item) => (
+      {filteredNavItems.map((item) => (
         <ListItem key={item.text} disablePadding>
           <ListItemButton
             component={RouterLink}
@@ -111,7 +120,7 @@ export function MainLayout() {
 
           {!isMobile && (
             <Box sx={{ flexGrow: 1 }}>
-              {navItems.map((item) => (
+              {filteredNavItems.map((item) => (
                 <Button
                   key={item.text}
                   component={RouterLink}

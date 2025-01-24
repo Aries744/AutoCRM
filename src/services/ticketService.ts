@@ -11,7 +11,7 @@ const PLACEHOLDER_TICKETS: Ticket[] = [
     created_at: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
     updated_at: new Date(Date.now() - 1800000).toISOString(), // 30 minutes ago
     created_by: 'john.doe@example.com',
-    assigned_to: 'support.tech@company.com',
+    assigned_to: 'support.tech@gauntletai.com',
     tags: ['cloud-storage', 'access-control', 'urgent'],
     internal_notes: 'Checking ACL configurations and recent permission changes.'
   },
@@ -24,7 +24,7 @@ const PLACEHOLDER_TICKETS: Ticket[] = [
     created_at: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
     updated_at: new Date(Date.now() - 43200000).toISOString(), // 12 hours ago
     created_by: 'sarah.smith@example.com',
-    assigned_to: 'performance.team@company.com',
+    assigned_to: 'performance.team@gauntletai.com',
     tags: ['performance', 'dashboard', 'optimization'],
     internal_notes: 'Initial analysis shows high database query times. Optimization in progress.'
   },
@@ -49,7 +49,7 @@ const PLACEHOLDER_TICKETS: Ticket[] = [
     created_at: new Date(Date.now() - 432000000).toISOString(), // 5 days ago
     updated_at: new Date(Date.now() - 345600000).toISOString(), // 4 days ago
     created_by: 'user.support@example.com',
-    assigned_to: 'email.admin@company.com',
+    assigned_to: 'email.admin@gauntletai.com',
     tags: ['email', 'verification', 'resolved'],
     internal_notes: 'Issue resolved - SPF records were incorrectly configured. Fixed and verified working.'
   },
@@ -62,7 +62,7 @@ const PLACEHOLDER_TICKETS: Ticket[] = [
     created_at: new Date(Date.now() - 604800000).toISOString(), // 7 days ago
     updated_at: new Date(Date.now() - 172800000).toISOString(), // 2 days ago
     created_by: 'ux.team@example.com',
-    assigned_to: 'dev.team@company.com',
+    assigned_to: 'dev.team@gauntletai.com',
     tags: ['feature-request', 'ui', 'enhancement'],
     internal_notes: 'Design mockups approved. Implementation scheduled for next sprint.'
   }

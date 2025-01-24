@@ -13,7 +13,7 @@
   - [ ] Social Logins
   - [ ] Password Reset
   - [ ] Email Verification
-  - [ ] Role-Based Access Control
+  - [x] Role-Based Access Control
 
 ### Ticket Data Model
 - [x] Standard Identifiers & Timestamps
@@ -100,14 +100,14 @@
   - [x] Form validation
   - [x] Success/error feedback
   - [x] Responsive design
-- [ ] Ticket Tracking
+- [x] Ticket Tracking
 - [x] Customer Authentication
   - [x] Email/Password Authentication
   - [x] Session Management
   - [x] Protected Routes
   - [x] Login/Signup Forms
   - [x] Logout Functionality
-- [ ] History View
+- [x] History View
 
 ### Self-Service Tools
 - [ ] Knowledge Base
@@ -162,12 +162,14 @@
 - Protected routes and session management
 - Centralized auth state management
 - Persistent sessions across page reloads
+- Role-based access control (@gauntletai.com for support staff)
+- Customer ticket tracking and history view
+- Support staff response templates
 
 ## Next Priority Features (Suggested):
-1. Ticket Tracking for Submitted Tickets
-2. Email Notifications
-3. File Attachments Support
-4. Customer History View
-5. Advanced Filtering & Search
-6. Password Reset Functionality
-7. Email Verification Flow 
+1. Email Notifications
+2. File Attachments Support
+3. Advanced Filtering & Search
+4. Password Reset Functionality
+5. Email Verification Flow
+6. Knowledge Base / FAQ System 
