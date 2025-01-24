@@ -75,7 +75,12 @@
 ## Customer Features
 
 ### Customer Portal
-- [ ] Ticket Submission Interface
+- [x] Ticket Submission Interface
+  - [x] Title and description fields
+  - [x] Priority selection
+  - [x] Tag management
+  - [x] Form validation
+  - [x] Success/error feedback
 - [ ] Ticket Tracking
 - [ ] Customer Authentication
 - [ ] History View
@@ -111,10 +116,11 @@
 - Basic webhook processing
 - Core ticket properties (status, priority, tags)
 - Internal notes system
+- Customer ticket submission portal with validation and feedback
 
 ## Next Priority Features (Suggested):
-1. Customer Portal for ticket submission
-2. Knowledge Base integration
-3. Team Management system
-4. Advanced Routing Intelligence
-5. Performance Metrics and Analytics 
+1. Customer Authentication
+2. Ticket Tracking for Submitted Tickets
+3. Knowledge Base integration
+4. Email Notifications
+5. File Attachments Support 

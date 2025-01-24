@@ -14,6 +14,15 @@ A modern customer relationship management system built with React, TypeScript, a
   - Categorize templates for easy access
   - Quick insertion into ticket responses
   - Customize templates before sending
+- 🌐 Customer Portal
+  - User-friendly ticket submission interface
+  - Priority selection
+  - Tag management
+  - Real-time form validation
+  - Instant submission feedback
+
+## Live Demo
+Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel.app)
 
 ## Tech Stack
 
@@ -22,6 +31,7 @@ A modern customer relationship management system built with React, TypeScript, a
 - Backend: Supabase
 - Routing: React Router
 - Build Tool: Vite
+- Deployment: Vercel
 
 ## Setup
 
@@ -116,6 +126,15 @@ src/
    - Select a template from the list
    - Customize the content if needed
    - Click "Insert" to add it to your response
+
+### Submitting Tickets
+1. Click "Submit Ticket" in the navigation bar or visit `/submit`
+2. Fill in the ticket details:
+   - Title: Brief summary of the issue
+   - Description: Detailed explanation
+   - Priority: Select from low to urgent
+   - Tags: Add relevant categories (optional)
+3. Submit the form and receive instant confirmation
 
 ## License
 
