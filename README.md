@@ -16,10 +16,16 @@ A modern customer relationship management system built with React, TypeScript, a
   - Customize templates before sending
 - 🌐 Customer Portal
   - User-friendly ticket submission interface
-  - Priority selection
-  - Tag management
+  - Priority selection with visual indicators
+  - Dynamic tag management
   - Real-time form validation
   - Instant submission feedback
+- 💅 Modern UI/UX
+  - Responsive design for all devices
+  - Mobile-friendly navigation
+  - Consistent color scheme
+  - Visual priority indicators
+  - Modern typography and spacing
 
 ## Live Demo
 Visit our live demo at [auto-crm-eight.vercel.app](https://auto-crm-eight.vercel.app)
